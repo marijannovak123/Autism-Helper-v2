@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Autism Helper</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+
+    <string name="unknown_error">Unknown error</string>
+    <string name="validationError_required">Please enter a value</string>
+    <string name="validationError_malformedEmail">Malformed email</string>
+    <string name="validationError_passwordTooShort">Password too short</string>
+</resources>

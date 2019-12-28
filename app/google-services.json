@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "20481588793",
+    "firebase_url": "https://autism-helper.firebaseio.com",
+    "project_id": "autism-helper",
+    "storage_bucket": "autism-helper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20481588793:android:4ebf51c93602ff0a",
+        "android_client_info": {
+          "package_name": "com.marijannovak.autismhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20481588793-af8qou484c7tjqpskqr258ud1ki3c01f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marijannovak.autismhelper",
+            "certificate_hash": "d181a710fd206264aef86b836591d6eaf6240df1"
+          }
+        },
+        {
+          "client_id": "20481588793-bhf7o9l6blpbv37jsnbshv4gqdiqkp09.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marijannovak.autismhelper",
+            "certificate_hash": "28910199e937b791e63fbd3e75b30e0e6ce1ebed"
+          }
+        },
+        {
+          "client_id": "20481588793-mo6oebvp2j6mqc38hb9gojqbhr74qe7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marijannovak.autismhelper",
+            "certificate_hash": "e11f6ed42380a9a80fa1aefc2499ea8b292a1a8a"
+          }
+        },
+        {
+          "client_id": "20481588793-au0stimvf37g7mi20vurrchtjhv2o594.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkgaXdR3f0rQDHvaQu9Uyk81fhhqLS01c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20481588793-au0stimvf37g7mi20vurrchtjhv2o594.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "20481588793-dvtpvp1nrp8v0hnp5ohk7oosl3ma5ef6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marijannovak.Autism-Helper-iOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
