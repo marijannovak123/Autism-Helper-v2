@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.marijannovak.autismhelper.common.BaseViewModel
+import com.marijannovak.autismhelper.common.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 

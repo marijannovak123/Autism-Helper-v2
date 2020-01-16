@@ -1,7 +1,6 @@
-package com.marijannovak.autismhelper.common
+package com.marijannovak.autismhelper.common.errors
 
 import com.marijannovak.autismhelper.R
-
 
 object ErrorHandler {
     val defaultApiExceptionResolver: (Int) -> Throwable = { code ->

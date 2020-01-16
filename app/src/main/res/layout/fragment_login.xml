@@ -2,7 +2,6 @@
 <layout>
 
     <data>
-
         <variable
             name="viewModel"
             type="com.marijannovak.autismhelper.ui.screens.login.AuthViewModel" />
@@ -58,14 +57,19 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:onClick="@{(v) -> viewModel.login()}"
             android:text="@string/login"
             app:isEnabled="@{viewModel.loginForm.isValidLiveData}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+            app:layout_constraintTop_toBottomOf="@id/tilPassword"
+            style="@style/FormButton" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            style="@style/FormButton"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:onClick="@{() -> viewModel.googleLogin()}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 package com.marijannovak.autismhelper.common
 
+import com.marijannovak.autismhelper.common.errors.ErrorHandler
 import retrofit2.Response
 
 typealias ApiExceptionResolver = (Int) -> Throwable

@@ -1,9 +1,9 @@
 package com.marijannovak.autismhelper.data.service
 
+import com.marijannovak.autismhelper.common.apiRequest
 import com.marijannovak.autismhelper.data.models.requests.CreateSessionRequest
 import com.marijannovak.autismhelper.data.models.requests.LoginRequest
 import com.marijannovak.autismhelper.data.network.API
-import com.marijannovak.autismhelper.common.apiRequest
 
 class AuthService (private val api: API) {
 

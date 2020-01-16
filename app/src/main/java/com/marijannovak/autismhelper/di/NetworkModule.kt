@@ -1,7 +1,7 @@
 package com.marijannovak.autismhelper.di
 
 import com.marijannovak.autismhelper.R
-import com.marijannovak.autismhelper.common.Constants.BASE_URL
+import com.marijannovak.autismhelper.constants.ApiConstants.BASE_URL
 import com.marijannovak.autismhelper.data.network.API
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

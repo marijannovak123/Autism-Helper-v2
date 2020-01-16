@@ -1,4 +1,4 @@
-package com.marijannovak.autismhelper.common
+package com.marijannovak.autismhelper.common.base
 
 import android.os.Bundle
 import androidx.annotation.CallSuper
@@ -16,7 +16,7 @@ abstract class BaseFragment<V: BaseViewModel>: Fragment() {
     private var pbLoading: LoadingDialog? = null
 
     @CallSuper
-    private fun observe() {
+    protected open fun observe() {
         viewModel.uiEventLiveData.observe(viewLifecycleOwner, eventObserver)
     }
 

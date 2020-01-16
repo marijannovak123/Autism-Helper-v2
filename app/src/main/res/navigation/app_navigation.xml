@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/app_navigation.xml"
-            app:startDestination="@id/loginFragment">
+            app:startDestination="@id/splashFragment">
 
     <fragment android:id="@+id/loginFragment" android:name="com.marijannovak.autismhelper.ui.screens.login.LoginFragment"
               android:label="fragment_login" tools:layout="@layout/fragment_login">
@@ -11,4 +11,16 @@
     </fragment>
     <fragment android:id="@+id/homeFragment" android:name="com.marijannovak.autismhelper.ui.screens.HomeFragment"
               android:label="fragment_home" tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.marijannovak.autismhelper.ui.screens.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

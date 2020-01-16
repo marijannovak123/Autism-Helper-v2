@@ -1,8 +1,10 @@
-<androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:id="@+id/navHost"
-        app:navGraph="@navigation/app_navigation"
-        app:defaultNavHost="true"
-        xmlns:android="http://schemas.android.com/apk/res/android"/>
+<fragment android:id="@+id/nav_host_fragment"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/app_navigation"
+    tools:ignore="FragmentTagUsage"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

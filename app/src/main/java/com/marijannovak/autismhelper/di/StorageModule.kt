@@ -4,5 +4,5 @@ import com.marijannovak.autismhelper.data.storage.AuthStorage
 import org.koin.dsl.module
 
 val storageModule = module {
-    single { AuthStorage(get()) }
+    single { AuthStorage(get(), get()) }
 }
