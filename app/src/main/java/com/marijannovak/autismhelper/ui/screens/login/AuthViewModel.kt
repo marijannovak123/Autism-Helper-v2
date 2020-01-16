@@ -18,6 +18,7 @@ class AuthViewModel (
     val loginForm = LoginForm()
 
     val googleLoginEvent = EventLiveData<Intent>()
+    val createProfileEvent = EventLiveData<Unit>()
 
     fun login() {
         if (loginForm.validate()) {
@@ -40,8 +41,13 @@ class AuthViewModel (
 
     fun onGoogleSignInResult(data: Intent) {
         suspendCall {
-            repository.getUserDataFromGoogleIntent(data)
-            println("kita")
+            notifyEvent(UIEvent.ShowLoading)
+            val createProfile = repository.loginWithUserDataFromGoogleIntent(data)
+            if (createProfile) {
+
+            } else {
+                navigate(R.id.action_loginFragment_to_homeFragment)
+            }
         }
     }
 

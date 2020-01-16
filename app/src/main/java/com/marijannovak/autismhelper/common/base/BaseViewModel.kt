@@ -14,10 +14,7 @@ import org.koin.core.inject
 abstract class BaseViewModel: ViewModel(), KoinComponent {
 
     private val defaultErrorHandler = { throwable: Throwable ->
-        val messageResId =
-            ErrorHandler.resolveExceptionMessageId(
-                throwable
-            )
+        val messageResId = ErrorHandler.resolveExceptionMessageId(throwable)
         notifyEvent(UIEvent.PostExecutionMessage(messageResId))
     }
 

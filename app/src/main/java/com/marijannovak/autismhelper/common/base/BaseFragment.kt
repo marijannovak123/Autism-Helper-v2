@@ -45,8 +45,7 @@ abstract class BaseFragment<V: BaseViewModel>: Fragment() {
     open fun setLoading(show: Boolean) {
         if (show) {
             if (pbLoading == null) {
-                pbLoading =
-                    LoadingDialog()
+                pbLoading = LoadingDialog()
             }
             if (pbLoading?.isAdded == false) {
                 pbLoading?.show(childFragmentManager, null)

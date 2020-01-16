@@ -7,7 +7,7 @@ import org.koin.core.context.startKoin
 
 class App: Application() {
 
-    val diModules get() = listOf(
+    private val diModules get() = listOf(
         commonModule,
         networkModule,
         dbModule,

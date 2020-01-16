@@ -72,6 +72,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
     implementation "com.squareup.retrofit2:converter-moshi:2.5.0"
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.4.0'
 
     //room
     implementation "androidx.room:room-runtime:$roomVersion"

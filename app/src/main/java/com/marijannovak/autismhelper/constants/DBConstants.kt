@@ -9,7 +9,6 @@ object DBConstants {
     const val TABLE_CHILDREN = "children"
     const val TABLE_ANSWERS = "answers"
     const val TABLE_AAC = "aac"
-    const val TABLE_RSS = "rss"
     const val TABLE_SENTENCE = "sentence"
     const val TABLE_PHRASE_CATEGORY = "phrase_category"
 }
