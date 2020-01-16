@@ -21,7 +21,7 @@ class AuthRepository (
 
     suspend fun isLoggedIn(): Boolean = authStorage.isLoggedIn()
 
-    fun login(request: LoginRequest) {
+    suspend fun login(request: LoginRequest) {
 
     }
 
