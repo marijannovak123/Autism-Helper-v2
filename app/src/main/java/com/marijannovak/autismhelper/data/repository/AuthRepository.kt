@@ -13,7 +13,9 @@ class AuthRepository (
     suspend fun isLoggedIn(): Boolean = authStorage.isLoggedIn()
 
     suspend fun login(request: LoginRequest) {
-
+        val firebaseUser = authService.login(request)
+        val userData = authService.getUserData(firebaseUser.uid)
+        userData?.let { authStorage.saveUser(userData) }
     }
 
     /**

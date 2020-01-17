@@ -53,11 +53,11 @@ class AuthService(
             }
         }
 
-    suspend fun checkUserDataExistsAndIsValid(uid: String): User? {
-        val userResponse = apiRequest { api.getUser(uid) }
-        return userResponse?.let { user ->
+    suspend fun checkUserDataExistsAndIsValid(uid: String): User? =
+         getUserData(uid)?.let { user ->
             if (user.isValidData) user else null
         }
-    }
+
+    suspend fun getUserData(uid: String) = apiRequest { api.getUser(uid) }
 
 }

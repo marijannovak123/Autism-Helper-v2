@@ -1,4 +1,4 @@
-package com.marijannovak.autismhelper.ui.screens.login
+package com.marijannovak.autismhelper.ui.screens.auth
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.marijannovak.autismhelper.ui.screens.login
+package com.marijannovak.autismhelper.ui.screens.auth
 
 import android.content.Intent
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -18,7 +18,6 @@ class AuthViewModel (
     val loginForm = LoginForm()
 
     val googleLoginEvent = EventLiveData<Intent>()
-    val createProfileEvent = EventLiveData<Unit>()
 
     fun login() {
         if (loginForm.validate()) {
@@ -44,7 +43,7 @@ class AuthViewModel (
             notifyEvent(UIEvent.ShowLoading)
             val createProfile = repository.loginWithUserDataFromGoogleIntent(data)
             if (createProfile) {
-
+                navigate(R.id.action_loginFragment_to_createChildrenProfilesFragment)
             } else {
                 navigate(R.id.action_loginFragment_to_homeFragment)
             }

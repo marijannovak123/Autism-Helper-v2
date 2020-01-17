@@ -1,4 +1,4 @@
-package com.marijannovak.autismhelper.ui.screens
+package com.marijannovak.autismhelper.ui.screens.auth
 
 
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 
 import com.marijannovak.autismhelper.R
 import com.marijannovak.autismhelper.common.base.BaseFragment
-import com.marijannovak.autismhelper.ui.screens.auth.AuthViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashFragment: BaseFragment<AuthViewModel>() {
+
+class CreateChildrenProfilesFragment : BaseFragment<AuthViewModel>() {
 
     override val viewModel: AuthViewModel by viewModel()
 
@@ -19,12 +19,7 @@ class SplashFragment: BaseFragment<AuthViewModel>() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.decideStartingScreen()
+        return inflater.inflate(R.layout.fragment_create_children_profiles, container, false)
     }
 
 }
