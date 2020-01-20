@@ -28,13 +28,16 @@ suspend fun <T> apiRequest(
 interface API {
 
     @GET("questions.json")
-    suspend fun getQuestions(): List<QuizQuestion>
+    suspend fun getQuestions(): Response<List<QuizQuestion>>
 
     @GET("categories.json")
-    suspend fun getCategories(): List<QuizCategory>
+    suspend fun getCategories(): Response<List<QuizCategory>>
 
     @GET("phrases.json")
-    suspend fun getPhrases(): List<AacPhrase>
+    suspend fun getPhrases(): Response<List<AacPhrase>>
+
+    @GET("phrase_categories.json")
+    suspend fun getPhraseCategories(): Response<List<PhraseCategory>>
 
     @GET("users/{userId}.json")
     suspend fun getUser(@Path("userId") userId: String): Response<User?>
@@ -59,9 +62,6 @@ interface API {
 
     @PATCH("users/{userId}/children/{childId}.json")
     suspend fun updateChild(@Path("userId") userId: String, @Path("childId") childId: String, @Body child: Child): Response<Unit>
-
-    @GET("phrase_categories.json")
-    suspend fun getPhraseCategories(): List<PhraseCategory>
 
     @GET
     @CustomConverterFactory.Xml
