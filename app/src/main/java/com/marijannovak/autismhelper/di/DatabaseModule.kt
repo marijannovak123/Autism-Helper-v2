@@ -16,4 +16,37 @@ val dbModule = module {
     single {
         get<AutismHelperDB>().userDao
     }
+
+    single {
+        get<AutismHelperDB>().answerDao
+    }
+
+    single {
+        get<AutismHelperDB>().childDao
+    }
+
+    single {
+        get<AutismHelperDB>().childScoreDao
+    }
+
+    single {
+        get<AutismHelperDB>().phraseCategoryDao
+    }
+
+    single {
+        get<AutismHelperDB>().phraseDao
+    }
+
+    single {
+        get<AutismHelperDB>().savedSentenceDao
+    }
+
+    single {
+        get<AutismHelperDB>().quizCategoryDao
+    }
+
+    single {
+        get<AutismHelperDB>().questionDao
+    }
+
 }

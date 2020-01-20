@@ -25,6 +25,9 @@ class InputField (private val inputType: InputType = InputType.Unvalidated) {
             Validator.resolveError(it, inputType)
         }
 
+    /**
+     * Get trimmed value or empty string if null
+     */
     val safeValue: String get() = inputLiveData.value?.trim() ?: ""
 
 }

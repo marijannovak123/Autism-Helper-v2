@@ -1,4 +1,4 @@
-package com.marijannovak.autismhelper.data.database
+package com.marijannovak.autismhelper.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query

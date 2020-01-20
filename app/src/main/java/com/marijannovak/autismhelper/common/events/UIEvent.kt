@@ -2,6 +2,9 @@ package com.marijannovak.autismhelper.common.events
 
 import android.os.Bundle
 
+/**
+ * Post events from viewmodels on views
+ */
 sealed class UIEvent {
     data class RemoveDestination(val destinationId: Int): UIEvent()
     data class BackTo(val destinationId: Int): UIEvent()
