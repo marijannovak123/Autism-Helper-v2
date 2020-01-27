@@ -36,8 +36,14 @@ val Fragment.navGraphViewModelStoreOwner: ViewModelStoreOwner
         }
     }
 
+/**
+ * Fetch the ViewModel from the parent activity's ViewModelStore
+ */
 inline fun <reified V : BaseViewModel> Fragment.parentActivityViewModel(): Lazy<V> =
     sharedViewModel(from = { requireActivity() })
 
+/**
+ * Fetch the ViewModel tied to the current navigation graph
+ */
 inline fun <reified V : BaseViewModel> Fragment.navGraphViewModel(): Lazy<V> =
     sharedViewModel(from = { navGraphViewModelStoreOwner })

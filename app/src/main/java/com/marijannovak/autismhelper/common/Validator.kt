@@ -3,6 +3,9 @@ package com.marijannovak.autismhelper.common
 import android.util.Patterns
 import com.marijannovak.autismhelper.R
 
+/**
+ * Type of input that has it's own validation logic
+ */
 sealed class InputType {
     object Unvalidated: InputType()
     object Required: InputType()
@@ -10,6 +13,9 @@ sealed class InputType {
     object Password: InputType()
 }
 
+/**
+ * Handle input validation
+ */
 object Validator {
 
     fun resolveError(inputText: String?, inputType: InputType): Int? {

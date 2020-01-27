@@ -11,7 +11,6 @@ import com.marijannovak.autismhelper.data.models.domain.User
 import com.marijannovak.autismhelper.data.models.requests.LoginRequest
 import com.marijannovak.autismhelper.data.network.API
 import com.marijannovak.autismhelper.data.network.apiRequest
-import java.lang.Exception
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine

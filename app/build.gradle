@@ -28,8 +28,14 @@ android {
     }
 
     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
@@ -38,10 +44,11 @@ ext {
     retrofitVersion = "2.6.2"
     interceptorVersion = "3.12.1"
     roomVersion = "2.2.3"
-    lifecycleVersion = "2.2.0-rc03"
+    lifecycleVersion = "2.2.0"
     koinVersion = "2.0.1"
-    navVersion = "2.2.0-rc04"
+    navVersion = "2.2.0"
     coroutinesVersion = "1.3.2"
+    work_version = "2.3.0"
 }
 
 dependencies {
@@ -52,7 +59,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha03'
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     testImplementation 'io.mockk:mockk:1.9.3'
@@ -104,6 +111,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 
     debugImplementation 'com.awesomedroidapps:inappstoragereader:1.0.2'
 }

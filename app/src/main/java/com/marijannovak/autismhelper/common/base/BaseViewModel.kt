@@ -1,5 +1,6 @@
 package com.marijannovak.autismhelper.common.base
 
+import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -58,9 +59,10 @@ abstract class BaseViewModel: ViewModel(), KoinComponent {
     /**
      * Post navigation event
      * @param action Navigation action resource id
+     * @param bundle Optional extra data for navigation action
      */
-    protected fun navigate(@IdRes action: Int) {
-        notifyEvent(UIEvent.NavigateTo(action))
+    protected fun navigate(@IdRes action: Int, bundle: Bundle? = null) {
+        notifyEvent(UIEvent.NavigateTo(action, bundle))
     }
 
 }

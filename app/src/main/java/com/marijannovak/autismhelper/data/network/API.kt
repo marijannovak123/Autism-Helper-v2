@@ -28,16 +28,16 @@ suspend fun <T> apiRequest(
 interface API {
 
     @GET("questions.json")
-    suspend fun getQuestions(): Response<List<QuizQuestion>>
+    suspend fun getQuestions(): List<QuizQuestion>
 
     @GET("categories.json")
-    suspend fun getCategories(): Response<List<QuizCategory>>
+    suspend fun getCategories(): List<QuizCategory>
 
     @GET("phrases.json")
-    suspend fun getPhrases(): Response<List<AacPhrase>>
+    suspend fun getPhrases(): List<AacPhrase>
 
     @GET("phrase_categories.json")
-    suspend fun getPhraseCategories(): Response<List<PhraseCategory>>
+    suspend fun getPhraseCategories(): List<PhraseCategory>
 
     @GET("users/{userId}.json")
     suspend fun getUser(@Path("userId") userId: String): Response<User?>
