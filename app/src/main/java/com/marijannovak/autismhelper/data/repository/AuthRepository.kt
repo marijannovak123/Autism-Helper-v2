@@ -19,8 +19,8 @@ class AuthRepository (
     }
 
     /**
-     * The login process with the generated FirebaseUser
-     * returns boolean if it needs to run the profile creating (add children etc.)
+     * The login process with the generated FirebaseUser from Google Sign In
+     * @return boolean saying if it needs to run the profile creation (add children etc.)
      */
     suspend fun loginWithUserDataFromGoogleIntent(data: Intent): Boolean {
         val firebaseUser = authService.generateFirebaseUser(data)

@@ -5,6 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
 
+/**
+ * Handle all the generic inserts, updates and deletes
+ */
 interface BaseDao<M> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

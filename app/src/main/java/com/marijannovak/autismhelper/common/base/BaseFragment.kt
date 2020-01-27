@@ -11,10 +11,19 @@ import com.marijannovak.autismhelper.ui.dialogs.LoadingDialog
 
 abstract class BaseFragment<V: BaseViewModel>: Fragment() {
 
+    /**
+     * Every Fragment needs to provide the ViewModel
+     */
     abstract val viewModel: V
 
+    /**
+     * DialogFragment to add on top of fragment to show loading
+     */
     private var pbLoading: LoadingDialog? = null
 
+    /**
+     * Observe ViewModel LiveData changes. Override to add subscriptions
+     */
     @CallSuper
     protected open fun observe() {
         viewModel.uiEventLiveData.observe(viewLifecycleOwner, eventObserver)
@@ -22,6 +31,9 @@ abstract class BaseFragment<V: BaseViewModel>: Fragment() {
 
     private val eventObserver = EventObserver<UIEvent> { uiEvent -> handleEvent(uiEvent) }
 
+    /**
+     * Default UIEvent handling
+     */
     open fun handleEvent(uiEvent: UIEvent) {
         when (uiEvent) {
             is UIEvent.RemoveDestination -> navController?.popBackStack(uiEvent.destinationId, true)
@@ -42,6 +54,9 @@ abstract class BaseFragment<V: BaseViewModel>: Fragment() {
         observe()
     }
 
+    /**
+     * Show or hide the loading overlay (dialog)
+     */
     open fun setLoading(show: Boolean) {
         if (show) {
             if (pbLoading == null) {
