@@ -2,6 +2,7 @@ package com.marijannovak.autismhelper.constants
 
 object DBConstants {
     const val DB_NAME = "autism_helper_db"
+
     const val TABLE_USER = "user"
     const val TABLE_CHILD_SCORES = "child_scores"
     const val TABLE_QUESTIONS = "questions"
