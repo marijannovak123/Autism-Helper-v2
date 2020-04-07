@@ -13,13 +13,13 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-abstract class BaseViewModel: ViewModel(), KoinComponent {
+abstract class BaseViewModel : ViewModel(), KoinComponent {
 
     /**
      * Default error handler for the [suspendCall] fail
      * Can be replaced with [CoroutineExceptionHandler]
      */
-    private val defaultErrorHandler = { throwable: Throwable ->
+    private val defaultErrorHandler = CoroutineExceptionHandler { _, throwable ->
         val messageResId = ErrorHandler.resolveExceptionMessageId(throwable)
         notifyEvent(UIEvent.PostExecutionMessage(messageResId))
     }
@@ -37,14 +37,11 @@ abstract class BaseViewModel: ViewModel(), KoinComponent {
      * @param block Coroutine code block to launch
      */
     fun <T> suspendCall(
-        errorHandler: (Throwable) -> Unit = defaultErrorHandler,
-        block: suspend () -> T) {
-        viewModelScope.launch {
-            try {
-                block()
-            } catch (t: Throwable) {
-                errorHandler(t)
-            }
+        errorHandler: CoroutineExceptionHandler = defaultErrorHandler,
+        block: suspend () -> T
+    ) {
+        viewModelScope.launch(errorHandler) {
+            block()
         }
     }
 
