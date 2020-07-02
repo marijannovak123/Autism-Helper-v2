@@ -16,8 +16,7 @@ import org.koin.core.inject
 abstract class BaseViewModel : ViewModel(), KoinComponent {
 
     /**
-     * Default error handler for the [suspendCall] fail
-     * Can be replaced with [CoroutineExceptionHandler]
+     * Default handler for the [suspendCall] exceptions
      */
     private val defaultErrorHandler = CoroutineExceptionHandler { _, throwable ->
         val messageResId = ErrorHandler.resolveExceptionMessageId(throwable)
