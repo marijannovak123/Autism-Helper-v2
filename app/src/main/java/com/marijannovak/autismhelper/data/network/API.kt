@@ -16,7 +16,8 @@ typealias ApiExceptionResolver = (Int) -> Throwable
  */
 suspend fun <T> apiRequest(
     exceptionResolver: ApiExceptionResolver = ErrorHandler.defaultApiExceptionResolver,
-    apiCall: suspend () -> Response<T>): T {
+    apiCall: suspend () -> Response<T>
+): T {
     val response = apiCall.invoke()
     return if (response.isSuccessful) {
         response.body() ?: throw KotlinNullPointerException("Null response")
@@ -46,22 +47,43 @@ interface API {
     suspend fun putUser(@Path("userId") userId: String, @Body user: User): Response<Unit>
 
     @PUT("users/{userId}/child_scores/{scoreId}.json")
-    suspend fun putScore(@Path("userId") userId: String, @Path("scoreId") scoreId: Int, @Body score: ChildScore): Response<Unit>
+    suspend fun putScore(
+        @Path("userId") userId: String,
+        @Path("scoreId") scoreId: Int,
+        @Body score: ChildScore
+    ): Response<Unit>
 
     @PUT("users/{userId}/children/{childId}.json")
-    suspend fun addChild(@Path("userId") userId: String, @Path("childId") childId: String, @Body child: Child): Response<Unit>
+    suspend fun addChild(
+        @Path("userId") userId: String,
+        @Path("childId") childId: String,
+        @Body child: Child
+    ): Response<Unit>
 
     @DELETE("users/{userId}/children/{childId}.json")
-    suspend fun deleteChild(@Path("userId") userId: String, @Path("childId") childId: String): Response<Unit>
+    suspend fun deleteChild(
+        @Path("userId") userId: String,
+        @Path("childId") childId: String
+    ): Response<Unit>
 
     @PATCH("users/{userId}.json")
-    suspend fun updateParentPassword(@Path("userId") userId: String, @Body password: ParentPasswordRequest): Response<Unit>
+    suspend fun updateParentPassword(
+        @Path("userId") userId: String,
+        @Body password: ParentPasswordRequest
+    ): Response<Unit>
 
     @PATCH("users/{userId}.json")
-    suspend fun updateParent(@Path("userId") userId: String, @Body user: UserUpdateRequest): Response<Unit>
+    suspend fun updateParent(
+        @Path("userId") userId: String,
+        @Body user: UserUpdateRequest
+    ): Response<Unit>
 
     @PATCH("users/{userId}/children/{childId}.json")
-    suspend fun updateChild(@Path("userId") userId: String, @Path("childId") childId: String, @Body child: Child): Response<Unit>
+    suspend fun updateChild(
+        @Path("userId") userId: String,
+        @Path("childId") childId: String,
+        @Body child: Child
+    ): Response<Unit>
 
     @GET
     @CustomConverterFactory.Xml

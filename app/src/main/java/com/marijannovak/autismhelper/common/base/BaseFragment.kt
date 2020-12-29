@@ -1,20 +1,24 @@
 package com.marijannovak.autismhelper.common.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.marijannovak.autismhelper.common.events.EventObserver
 import com.marijannovak.autismhelper.common.events.UIEvent
 import com.marijannovak.autismhelper.common.extensions.navController
 import com.marijannovak.autismhelper.common.extensions.snackbar
 import com.marijannovak.autismhelper.ui.dialogs.LoadingDialog
 
-abstract class BaseFragment<V: BaseViewModel>: Fragment() {
+abstract class BaseFragment<S, E> : Fragment() {
 
     /**
-     * Every Fragment needs to provide the ViewModel
+     * Provide the ViewModel
      */
-    abstract val viewModel: V
+    abstract val viewModel: BaseViewModel<S, E>
 
     /**
      * DialogFragment to add on top of fragment to show loading

@@ -7,13 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.marijannovak.autismhelper.common.errors.ErrorHandler
 import com.marijannovak.autismhelper.common.events.EventLiveData
 import com.marijannovak.autismhelper.common.events.UIEvent
-import com.marijannovak.autismhelper.data.repository.ResourceRepository
+import com.marijannovak.autismhelper.data.StringProvider
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-abstract class BaseViewModel : ViewModel(), KoinComponent {
+abstract class BaseViewModel<State, Event> : ViewModel() {
 
     /**
      * Default handler for the [suspendCall] exceptions
@@ -28,7 +27,8 @@ abstract class BaseViewModel : ViewModel(), KoinComponent {
     /**
      * Fetch strings etc. from resources
      */
-    protected val res: ResourceRepository by inject()
+    @Inject
+    protected lateinit var res: StringProvider
 
     /**
      * Launch a coroutine suspend function in the ViewModel scope

@@ -1,6 +1,7 @@
 package com.marijannovak.autismhelper.ui.screens.auth
 
 import android.content.Intent
+import androidx.hilt.lifecycle.ViewModelInject
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.marijannovak.autismhelper.R
@@ -8,25 +9,22 @@ import com.marijannovak.autismhelper.common.base.BaseViewModel
 import com.marijannovak.autismhelper.common.events.EventLiveData
 import com.marijannovak.autismhelper.common.events.UIEvent
 import com.marijannovak.autismhelper.data.repository.AuthRepository
-import com.marijannovak.autismhelper.ui.forms.LoginForm
 import kotlinx.coroutines.delay
 
-class AuthViewModel (
+class AuthViewModel @ViewModelInject constructor(
     private val repository: AuthRepository
-): BaseViewModel() {
-
-    val loginForm = LoginForm()
+): BaseViewModel<Nothing, Nothing>() {
 
     val googleLoginEvent = EventLiveData<Intent>()
 
     fun login() {
-        if (loginForm.validate()) {
-            suspendCall {
-                notifyEvent(UIEvent.ShowLoading)
-                repository.login(loginForm.request)
-                navigate(R.id.action_loginFragment_to_homeFragment)
-            }
-        }
+//        if (loginForm.validate()) {
+//            suspendCall {
+//                notifyEvent(UIEvent.ShowLoading)
+//                repository.login(loginForm.request)
+//                navigate(R.id.action_loginFragment_to_homeFragment)
+//            }
+//        }
     }
 
     fun googleLogin() {

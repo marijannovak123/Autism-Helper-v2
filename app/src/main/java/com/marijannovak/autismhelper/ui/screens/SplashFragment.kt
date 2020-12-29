@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.viewModels
 import com.marijannovak.autismhelper.R
 import com.marijannovak.autismhelper.common.base.BaseFragment
 import com.marijannovak.autismhelper.ui.screens.auth.AuthViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class SplashFragment: BaseFragment<AuthViewModel>() {
+@AndroidEntryPoint
+class SplashFragment: BaseFragment<Nothing, Nothing>() {
 
-    override val viewModel: AuthViewModel by viewModel()
+    override val viewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,5 +27,4 @@ class SplashFragment: BaseFragment<AuthViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.decideStartingScreen()
     }
-
 }

@@ -5,16 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.marijannovak.autismhelper.R
 import com.marijannovak.autismhelper.common.base.BaseFragment
 import com.marijannovak.autismhelper.sync.SyncWorker
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment: BaseFragment<HomeViewModel>() {
+@AndroidEntryPoint
+class HomeFragment: BaseFragment<Nothing, Nothing>() {
 
-    override val viewModel: HomeViewModel by viewModel()
+    override val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

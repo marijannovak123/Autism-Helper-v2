@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
-    <data>
-        <variable
-            name="viewModel"
-            type="com.marijannovak.autismhelper.ui.screens.auth.AuthViewModel" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -17,7 +9,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
             style="@style/InputLayout"
-            app:error="@{viewModel.loginForm.email.errorLiveData}"
             app:layout_constraintBottom_toTopOf="@+id/tilPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -27,8 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:text="@={viewModel.loginForm.email.inputLiveData}" />
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,7 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_medium"
             android:layout_marginEnd="@dimen/padding_medium"
-            app:error="@{viewModel.loginForm.password.errorLiveData}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -51,15 +40,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:inputType="textPassword"
-                android:text="@={viewModel.loginForm.password.inputLiveData}" />
+                android:inputType="textPassword"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
-            android:onClick="@{(v) -> viewModel.login()}"
             android:text="@string/login"
-            app:isEnabled="@{viewModel.loginForm.isValidLiveData}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tilPassword"
@@ -68,9 +55,7 @@
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btnGoogleSignIn"
             style="@style/NoBackgroundFormButton"
-            app:layout_constraintTop_toBottomOf="@id/btnLogin"
-            app:onClick="@{() -> viewModel.googleLogin()}" />
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</layout>

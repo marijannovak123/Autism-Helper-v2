@@ -11,17 +11,30 @@ import com.marijannovak.autismhelper.data.models.domain.User
 import com.marijannovak.autismhelper.data.models.requests.LoginRequest
 import com.marijannovak.autismhelper.data.network.API
 import com.marijannovak.autismhelper.data.network.apiRequest
+import kotlinx.coroutines.suspendCancellableCoroutine
+import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class AuthService(
+interface AuthService {
+
+    suspend fun login(request: LoginRequest): FirebaseUser
+
+    suspend fun generateFirebaseUser(data: Intent): FirebaseUser
+
+    suspend fun checkUserDataExistsAndIsValid(uid: String): User?
+
+    suspend fun getUserData(uid: String): User?
+}
+
+class AuthServiceImpl @Inject constructor(
     private val api: API,
     private val firebaseAuth: FirebaseAuth
-) {
+) : AuthService {
 
-    suspend fun login(request: LoginRequest): FirebaseUser =
-        suspendCoroutine { continuation ->
+    override suspend fun login(request: LoginRequest): FirebaseUser =
+        suspendCancellableCoroutine{ continuation ->
             firebaseAuth.signInWithEmailAndPassword(request.email, request.password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful && firebaseAuth.currentUser != null) {
@@ -33,7 +46,7 @@ class AuthService(
                 }
         }
 
-    suspend fun generateFirebaseUser(data: Intent): FirebaseUser =
+    override suspend fun generateFirebaseUser(data: Intent): FirebaseUser =
         suspendCoroutine { continuation ->
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -52,11 +65,11 @@ class AuthService(
             }
         }
 
-    suspend fun checkUserDataExistsAndIsValid(uid: String): User? =
+    override suspend fun checkUserDataExistsAndIsValid(uid: String): User? =
          getUserData(uid)?.let { user ->
             if (user.isValidData) user else null
         }
 
-    suspend fun getUserData(uid: String) = apiRequest { api.getUser(uid) }
+    override suspend fun getUserData(uid: String) = apiRequest { api.getUser(uid) }
 
 }

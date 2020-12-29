@@ -3,29 +3,31 @@ package com.marijannovak.autismhelper.ui.screens.auth
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.marijannovak.autismhelper.R
 import com.marijannovak.autismhelper.common.base.BaseFragment
 import com.marijannovak.autismhelper.common.events.EventObserver
-import com.marijannovak.autismhelper.constants.AppConstants.REQUEST_CODE_GOOGLE_SIGN_IN
-import com.marijannovak.autismhelper.databinding.FragmentLoginBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class LoginFragment: BaseFragment<AuthViewModel>() {
+@AndroidEntryPoint
+class LoginFragment: BaseFragment<Nothing, Nothing>() {
 
-    override val viewModel: AuthViewModel by viewModel()
+    companion object {
+        const val REQUEST_CODE_GOOGLE_SIGN_IN = 9001
+    }
+
+    override val viewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = DataBindingUtil.inflate<FragmentLoginBinding>(
-        inflater, R.layout.fragment_login, container, false
-    ).apply {
-        lifecycleOwner = this@LoginFragment
-        viewModel = this@LoginFragment.viewModel
-    }.root
+    ): View? {
+        return LayoutInflater.from(container?.context).inflate(R.layout.fragment_login, container, false)
+    }
 
     override fun observe() {
         super.observe()
@@ -40,5 +42,4 @@ class LoginFragment: BaseFragment<AuthViewModel>() {
             else -> super.onActivityResult(requestCode, resultCode, data)
         }
     }
-
 }

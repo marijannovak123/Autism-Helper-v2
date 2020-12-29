@@ -1,30 +1,38 @@
-package com.marijannovak.autismhelper.di
+package com.marijannovak.autismhelper.di.modules
 
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.marijannovak.autismhelper.R
 import com.marijannovak.autismhelper.constants.ApiConstants.BASE_URL
 import com.marijannovak.autismhelper.data.network.API
 import com.marijannovak.autismhelper.data.network.CustomConverterFactory
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 
-val networkModule = module {
-    single {
-        OkHttpClient.Builder().apply {
+@Module
+@InstallIn(SingletonComponent::class)
+class NetworkModule {
+
+    @Provides
+    fun provideClient(@ApplicationContext context: Context): OkHttpClient {
+        return OkHttpClient.Builder().apply {
             addInterceptor(
                 HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
             )
 
             addInterceptor { chain ->
                 val original = chain.request()
-                val httpUrl = original.url()
+                val httpUrl = original.url
                 val newHttpUrl = httpUrl.newBuilder()
-                    .addQueryParameter("auth", androidContext().getString(R.string.FIREBASE_AUTH_KEY))
+                    .addQueryParameter("auth", context.getString(R.string.FIREBASE_AUTH_KEY))
                     .build()
                 val request = original.newBuilder().url(newHttpUrl).build()
                 chain.proceed(request)
@@ -32,9 +40,10 @@ val networkModule = module {
         }.build()
     }
 
-    single {
-        Retrofit.Builder()
-            .client(get())
+    @Provides
+    fun provideRetrofit(client: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .client(client)
             .baseUrl(BASE_URL)
             .addConverterFactory(CustomConverterFactory.Builder()
                 .add(CustomConverterFactory.Xml::class.java, SimpleXmlConverterFactory.createNonStrict())
@@ -43,12 +52,13 @@ val networkModule = module {
             .build()
     }
 
-    single {
-        get<Retrofit>().create(API::class.java)
+    @Provides
+    fun provideApi(retrofit: Retrofit): API {
+        return retrofit.create(API::class.java)
     }
 
-    single {
-        FirebaseAuth.getInstance()
+    @Provides
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
-
 }

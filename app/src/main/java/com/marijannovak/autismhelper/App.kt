@@ -1,28 +1,27 @@
 package com.marijannovak.autismhelper
 
 import android.app.Application
-import com.marijannovak.autismhelper.di.*
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
+import com.marijannovak.autismhelper.data.Prefs
+import com.tumblr.remember.Remember
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
-class App: Application() {
+@HiltAndroidApp
+class App : Application(), Configuration.Provider {
 
-    private val diModules get() = listOf(
-        commonModule,
-        networkModule,
-        dbModule,
-        viewModelModule,
-        repositoryModule,
-        serviceModule,
-        storageModule
-    )
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()
-        startKoin {
-            androidContext(this@App)
-            modules(diModules)
-        }
+        Remember.init(this, Prefs.PREFS_NAME)
     }
 
+    override fun getWorkManagerConfiguration(): Configuration {
+        return Configuration.Builder()
+            .setWorkerFactory(workerFactory)
+            .build()
+    }
 }
